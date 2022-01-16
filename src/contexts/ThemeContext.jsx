@@ -3,7 +3,7 @@ const ThemeContext = createContext();
 function ThemeContextProvider(props) {
   const themes = {
     firstTheme: {
-      pageBg: "#fff",
+      pageBg: "#d1d8e0",
       navbarColor: "white",
       navbarBg: "#2c3e50",
       cardWrapperBg: "#dff9fb",
@@ -20,7 +20,7 @@ function ThemeContextProvider(props) {
     },
   };
 
-  const [themeName, setThemeName] = useState("secondTheme");
+  const [themeName, setThemeName] = useState("firstTheme");
 
   useEffect(() => {
     const localThemeName = localStorage.getItem("themeName")
@@ -33,8 +33,7 @@ function ThemeContextProvider(props) {
     localStorage.setItem("themeName", themeName);
     const theme =
       themeName === "firstTheme" ? themes.firstTheme : themes.secondTheme;
-    document.body.className = "";
-    document.body.classList.add(theme.pageBg);
+    document.body.style.backgroundColor = theme.pageBg;
   }, [themeName]);
 
   return (
